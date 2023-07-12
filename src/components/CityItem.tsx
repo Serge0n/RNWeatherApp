@@ -26,6 +26,7 @@ export function CityItem({
         {
           padding: 16,
           borderWidth: 2,
+          borderRadius: 8,
           borderColor: colors.border,
           opacity: pressed ? 0.5 : 1.0,
           flexDirection: 'row',

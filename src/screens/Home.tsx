@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react'
 import { ActivityIndicator, FlatList, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-const API_WEATHER_KEY = '889f0cd84330b182bf974584d4b2966d'
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
+const API_KEY = '889f0cd84330b182bf974584d4b2966d'
 
 export function Home() {
   const { navigate } = useNavigation<NavStackProps<'Home'>['navigation']>()
@@ -20,7 +21,7 @@ export function Home() {
     try {
       setIsLoading(true)
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_WEATHER_KEY}`,
+        `${API_URL}?q=${city}&units=metric&appid=${API_KEY}`,
       )
       const cityData = await response.json()
       const isDuplicate = favorites.some((item) => item.id === cityData.id)

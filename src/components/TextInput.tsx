@@ -32,10 +32,13 @@ export function TextInput({
         }}
         style={[
           {
+            fontSize: 24,
             color: colors.text,
+            borderRadius: 8,
             borderColor: isFocused ? colors.primary : colors.border,
             borderWidth: 3,
-            padding: 8,
+            paddingHorizontal: 8,
+            paddingVertical: 12,
           },
           style,
         ]}
