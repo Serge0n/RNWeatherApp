@@ -4,8 +4,9 @@ const ERR = 'error'
 
 module.exports = {
   root: true,
-  extends: ['@react-native-community', 'prettier'],
+  extends: ['@react-native', 'prettier'],
   rules: {
+    'react/jsx-closing-bracket-location': WARN,
     'jsx-quotes': [ERR, 'prefer-single'],
     'react/react-in-jsx-scope': OFF,
     'react/no-array-index-key': WARN,
