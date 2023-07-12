@@ -931,29 +931,57 @@ PODS:
   - React-jsinspector (0.72.1)
   - React-logger (0.72.1):
     - glog
-  - react-native-safe-area-context (4.6.4):
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - react-native-safe-area-context/common (= 4.6.4)
-    - react-native-safe-area-context/fabric (= 4.6.4)
-    - ReactCommon/turbomodule/core
-  - react-native-safe-area-context/common (4.6.4):
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - ReactCommon/turbomodule/core
-  - react-native-safe-area-context/fabric (4.6.4):
-    - RCT-Folly
+  - react-native-safe-area-context (4.7.0):
+    - hermes-engine
+    - RCT-Folly (= 2021.07.22.00)
     - RCTRequired
     - RCTTypeSafety
     - React-Codegen
     - React-Core
-    - react-native-safe-area-context/common
+    - React-debug
+    - React-Fabric
+    - React-graphics
+    - react-native-safe-area-context/common (= 4.7.0)
+    - react-native-safe-area-context/fabric (= 4.7.0)
+    - React-NativeModulesApple
     - React-RCTFabric
+    - React-utils
+    - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-safe-area-context/common (4.7.0):
+    - hermes-engine
+    - RCT-Folly (= 2021.07.22.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-graphics
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-safe-area-context/fabric (4.7.0):
+    - hermes-engine
+    - RCT-Folly (= 2021.07.22.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-graphics
+    - react-native-safe-area-context/common
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-NativeModulesApple (0.72.1):
     - hermes-engine
     - React-callinvoker
@@ -1336,7 +1364,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 184eae1ecdedc7a083194bd9ff809c93f08fd34c
   React-jsinspector: d0b5bfd1085599265f4212034321e829bdf83cc0
   React-logger: b8103c9b04e707b50cdd2b1aeb382483900cbb37
-  react-native-safe-area-context: f1a0cdd4f1efbd3b0120eb715d81151a28d3dac8
+  react-native-safe-area-context: 42600d3a853a335c003c35fe314c320be94f8cbc
   React-NativeModulesApple: 4f31a812364443cee6ef768d256c594ad3b20f53
   React-perflogger: 3d501f34c8d4b10cb75f348e43591765788525ad
   React-RCTActionSheet: f5335572c979198c0c3daff67b07bd1ad8370c1d

@@ -6,6 +6,7 @@ import {
 import { NavStack } from 'navigation'
 import { StatusBar, useColorScheme } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
@@ -13,11 +14,14 @@ export function App(): JSX.Element {
   const hideSplash = () => RNBootSplash.hide({ fade: true })
 
   return (
-    <NavigationContainer
-      onReady={hideSplash}
-      theme={isDarkMode ? DarkTheme : DefaultTheme}>
-      <StatusBar />
-      <NavStack />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer
+        onReady={hideSplash}
+        theme={isDarkMode ? DarkTheme : DefaultTheme}
+      >
+        <StatusBar />
+        <NavStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
 }
