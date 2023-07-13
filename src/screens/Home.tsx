@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { CityItem, TextInput } from 'components'
 import { NavStackProps } from 'navigation'
 import { useEffect, useState } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 import { ActivityIndicator, FlatList, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -16,6 +17,7 @@ export function Home() {
   const [cities, setCities] = useState<Array<any>>([])
   const [favorites, setFavorites] = useState<Array<any>>([])
   const { getItem, setItem } = useAsyncStorage('favorites')
+  const { showBoundary } = useErrorBoundary()
 
   const getCities = async (city: string) => {
     try {
@@ -28,7 +30,7 @@ export function Home() {
 
       !isDuplicate && setCities([cityData])
     } catch (error) {
-      console.log(error)
+      showBoundary(error)
     } finally {
       setIsLoading(false)
     }

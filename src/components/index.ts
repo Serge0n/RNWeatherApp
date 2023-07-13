@@ -1,4 +1,5 @@
 export * from './CityItem'
+export * from './ErrorView'
 export * from './Text'
 export * from './TextInput'
 export * from './WeatherDetailsItem'
