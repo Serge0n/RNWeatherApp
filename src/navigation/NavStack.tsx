@@ -12,21 +12,17 @@ export type NavStackParams = {
 export type NavStackProps<Screen extends keyof NavStackParams> =
   NativeStackScreenProps<NavStackParams, Screen>
 
-const Stack = createNativeStackNavigator<NavStackParams>()
+const { Navigator, Screen } = createNativeStackNavigator<NavStackParams>()
 
 export function NavStack() {
   return (
-    <Stack.Navigator initialRouteName='Home'>
-      <Stack.Screen
-        name='Home'
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
+    <Navigator initialRouteName='Home'>
+      <Screen name='Home' component={Home} options={{ headerShown: false }} />
+      <Screen
         name='CityWeather'
         component={CityWeather}
         options={({ route }) => ({ title: route.params.city.name })}
       />
-    </Stack.Navigator>
+    </Navigator>
   )
 }
