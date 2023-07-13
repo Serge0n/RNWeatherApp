@@ -6,7 +6,7 @@ export function Text({ style, ...restProps }: TextProps) {
 
   return (
     <RNText
-      style={[{ color: colors.text, fontSize: 16 }, style]}
+      style={[{ color: colors.text, fontSize: 24 }, style]}
       {...restProps}
     />
   )

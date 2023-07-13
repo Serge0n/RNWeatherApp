@@ -53,7 +53,7 @@ export function Home() {
     setFavorites(filteredFavorites)
   }
 
-  const onCityPress = () => navigate('CityWeather')
+  const onCityPress = (city: any) => navigate('CityWeather', { city })
 
   useEffect(() => {
     readItemsFromFavorites()
@@ -80,7 +80,7 @@ export function Home() {
                   isFavorite
                   city={item}
                   onStarPress={() => removeFavorite(item)}
-                  onPress={onCityPress}
+                  onPress={() => onCityPress(item)}
                   style={{ marginBottom: 16 }}
                 />
               )
@@ -92,7 +92,7 @@ export function Home() {
         renderItem={({ item }) => (
           <CityItem
             city={item}
-            onPress={onCityPress}
+            onPress={() => onCityPress(item)}
             onStarPress={() => writeItemsToFavorites(item)}
           />
         )}

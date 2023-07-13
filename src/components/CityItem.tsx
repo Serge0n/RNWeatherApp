@@ -1,6 +1,12 @@
 import { useTheme } from '@react-navigation/native'
 import { Text } from 'components'
-import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native'
+import {
+  Pressable,
+  PressableProps,
+  StyleProp,
+  View,
+  ViewStyle,
+} from 'react-native'
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 
 type CityItemProps = {
@@ -8,7 +14,7 @@ type CityItemProps = {
   isFavorite?: boolean
   onStarPress: () => void
   style?: StyleProp<ViewStyle>
-} & PressableProps
+} & Omit<PressableProps, 'style'>
 
 export function CityItem({
   isFavorite = false,
@@ -38,7 +44,19 @@ export function CityItem({
       onPress={onPress}
       {...restProps}
     >
-      <Text>{`${city.name}, ${city.sys.country}, ${city.main.temp} °C, ${city.weather[0].main}`}</Text>
+      <View
+        style={{
+          marginRight: 16,
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Text>{`${city.name}, ${city.sys.country}`}</Text>
+        <Text>{`${city.main.temp} °C`}</Text>
+      </View>
+
       <Pressable onPress={onStarPress}>
         <AntDesignIcon
           name='star'

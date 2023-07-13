@@ -6,7 +6,7 @@ import { CityWeather, Home } from 'screens'
 
 export type NavStackParams = {
   Home: undefined
-  CityWeather: undefined
+  CityWeather: { city: any }
 }
 
 export type NavStackProps<Screen extends keyof NavStackParams> =
@@ -25,7 +25,7 @@ export function NavStack() {
       <Stack.Screen
         name='CityWeather'
         component={CityWeather}
-        options={{ headerShown: true }}
+        options={({ route }) => ({ title: route.params.city.name })}
       />
     </Stack.Navigator>
   )
