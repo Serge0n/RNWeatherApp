@@ -5,6 +5,7 @@ import {
   Pressable,
   PressableProps,
   StyleProp,
+  StyleSheet,
   View,
   ViewStyle,
 } from 'react-native'
@@ -27,33 +28,20 @@ export function CityItem({
 }: CityItemProps) {
   const { colors } = useTheme()
 
+  const borderColor = { borderColor: colors.border }
+
   return (
     <Pressable
       style={({ pressed }) => [
-        {
-          padding: 16,
-          borderWidth: 2,
-          borderRadius: 8,
-          borderColor: colors.border,
-          opacity: pressed ? 0.5 : 1.0,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        },
+        pressable,
+        borderColor,
+        { opacity: pressed ? 0.5 : 1.0 },
         style,
       ]}
       onPress={onPress}
       {...restProps}
     >
-      <View
-        style={{
-          marginRight: 16,
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+      <View style={view}>
         <Text>{`${city.name}, ${city.sys.country}`}</Text>
         <Text>{`${city.main.temp} °C`}</Text>
       </View>
@@ -68,3 +56,21 @@ export function CityItem({
     </Pressable>
   )
 }
+
+const { pressable, view } = StyleSheet.create({
+  pressable: {
+    padding: 16,
+    borderWidth: 2,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  view: {
+    marginRight: 16,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+})

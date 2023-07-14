@@ -5,7 +5,7 @@ import { CityItem, TextInput } from 'components'
 import { NavStackProps } from 'navigation'
 import { useEffect, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
-import { ActivityIndicator, FlatList, View } from 'react-native'
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function Home() {
@@ -56,17 +56,19 @@ export function Home() {
     readItemsFromFavorites()
   }, [])
 
+  const safeAreaStyles = { paddingTop: top, paddingBottom: bottom }
+
   return (
-    <View style={{ flex: 1, paddingTop: top, paddingBottom: bottom }}>
+    <View style={[homeContainer, safeAreaStyles]}>
       <TextInput
         placeholder='Enter the city'
         onChangeText={() => setCities([])}
         onSubmitEditing={({ nativeEvent }) => getCityData(nativeEvent.text)}
-        style={{ marginHorizontal: 16 }}
+        style={textInput}
       />
 
       <FlatList
-        style={{ marginTop: 16, paddingHorizontal: 16 }}
+        style={flatList}
         data={cities}
         ListHeaderComponent={
           <View>
@@ -78,7 +80,7 @@ export function Home() {
                   city={item}
                   onStarPress={() => removeFavorite(item)}
                   onPress={() => onCityPress(item)}
-                  style={{ marginBottom: 16 }}
+                  style={cityItem}
                 />
               )
             })}
@@ -97,3 +99,10 @@ export function Home() {
     </View>
   )
 }
+
+const { homeContainer, textInput, flatList, cityItem } = StyleSheet.create({
+  homeContainer: { flex: 1 },
+  textInput: { marginHorizontal: 16 },
+  flatList: { marginTop: 16, paddingHorizontal: 16 },
+  cityItem: { marginBottom: 16 },
+})

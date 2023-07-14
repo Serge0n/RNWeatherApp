@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import { Text, WeatherDetailsItem, WeatherDetailsItemProps } from 'components'
 import { NavStackProps } from 'navigation'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 
 export function CityWeather() {
   const { city } = useRoute<NavStackProps<'CityWeather'>['route']>().params
@@ -14,32 +14,15 @@ export function CityWeather() {
   ]
 
   return (
-    <ScrollView
-      style={{ flex: 1, paddingTop: 32, paddingHorizontal: 16 }}
-      contentContainerStyle={{ alignItems: 'center' }}
-    >
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'flex-end',
-          marginBottom: 32,
-        }}
-      >
-        <Text style={{ fontSize: 64 }}>{`${city.main.temp} °`}</Text>
-        <Text style={{ fontSize: 32 }}>{city.weather[0].main}</Text>
+    <ScrollView style={scrollView} contentContainerStyle={scrollViewContainer}>
+      <View style={mainInfoContainer}>
+        <Text style={degreesText}>{`${city.main.temp} °`}</Text>
+        <Text style={mainWeatherText}>{city.weather[0].main}</Text>
       </View>
 
       <Text>Weather details</Text>
 
-      <View
-        style={{
-          marginTop: 32,
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-          rowGap: 24,
-        }}
-      >
+      <View style={weatherDetailsContainer}>
         {weatherDetails.map((item) => (
           <WeatherDetailsItem {...item} key={item.label} />
         ))}
@@ -47,3 +30,29 @@ export function CityWeather() {
     </ScrollView>
   )
 }
+
+const {
+  scrollView,
+  scrollViewContainer,
+  mainInfoContainer,
+  degreesText,
+  mainWeatherText,
+  weatherDetailsContainer,
+} = StyleSheet.create({
+  scrollView: { flex: 1, paddingTop: 32, paddingHorizontal: 16 },
+  scrollViewContainer: { alignItems: 'center' },
+  mainInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginBottom: 32,
+  },
+  degreesText: { fontSize: 64 },
+  mainWeatherText: { fontSize: 32 },
+  weatherDetailsContainer: {
+    marginTop: 32,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    rowGap: 24,
+  },
+})

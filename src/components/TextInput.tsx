@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
+  StyleSheet,
   View,
   ViewStyle,
 } from 'react-native'
@@ -19,6 +20,11 @@ export function TextInput({
   const { colors } = useTheme()
   const [isFocused, setIsFocused] = useState(false)
 
+  const dynamicTypes = {
+    color: colors.text,
+    borderColor: isFocused ? colors.primary : colors.border,
+  }
+
   return (
     <View style={containerStyle}>
       <RNTextInput
@@ -30,20 +36,19 @@ export function TextInput({
           setIsFocused(false)
           onBlur?.(e)
         }}
-        style={[
-          {
-            fontSize: 24,
-            color: colors.text,
-            borderRadius: 8,
-            borderColor: isFocused ? colors.primary : colors.border,
-            borderWidth: 3,
-            paddingHorizontal: 8,
-            paddingVertical: 12,
-          },
-          style,
-        ]}
+        style={[textInput, dynamicTypes, style]}
         {...restProps}
       />
     </View>
   )
 }
+
+const { textInput } = StyleSheet.create({
+  textInput: {
+    fontSize: 24,
+    borderRadius: 8,
+    borderWidth: 3,
+    paddingHorizontal: 8,
+    paddingVertical: 12,
+  },
+})
