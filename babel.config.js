@@ -1,4 +1,4 @@
-const paths = ['components', 'screens', 'utils', 'navigation']
+const paths = ['components', 'screens', 'utils', 'navigation', 'api']
 
 const babelModuleResolverAlias = paths.reduce(
   (acc, name) => {

@@ -2,7 +2,11 @@ import { useTheme } from '@react-navigation/native'
 import { Text } from 'components'
 import { View } from 'react-native'
 
-export type WeatherDetailsItemProps = Record<'label' | 'value' | 'unit', string>
+export type WeatherDetailsItemProps = {
+  label: string
+  value: number
+  unit: string
+}
 
 export function WeatherDetailsItem({
   label,

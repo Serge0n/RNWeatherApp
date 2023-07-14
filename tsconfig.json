@@ -6,7 +6,8 @@
       "screens": ["./src/screens/index.ts"],
       "utils": ["./src/utils"],
       "navigation": ["./src/navigation"],
-      "src": ["./src"]
+      "src": ["./src"],
+      "api": ["./src/api"]
     }
   }
 }

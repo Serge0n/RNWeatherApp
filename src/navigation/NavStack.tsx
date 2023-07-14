@@ -2,11 +2,12 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack'
+import { WeatherData } from 'api'
 import { CityWeather, Home } from 'screens'
 
 export type NavStackParams = {
   Home: undefined
-  CityWeather: { city: any }
+  CityWeather: { city: WeatherData }
 }
 
 export type NavStackProps<Screen extends keyof NavStackParams> =

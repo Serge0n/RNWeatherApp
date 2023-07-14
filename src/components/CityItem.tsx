@@ -1,4 +1,5 @@
 import { useTheme } from '@react-navigation/native'
+import { WeatherData } from 'api'
 import { Text } from 'components'
 import {
   Pressable,
@@ -10,7 +11,7 @@ import {
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 
 type CityItemProps = {
-  city: any
+  city: WeatherData
   isFavorite?: boolean
   onStarPress: () => void
   style?: StyleProp<ViewStyle>
